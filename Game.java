@@ -33,24 +33,28 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room entrance, hall, armory, library, prison, treasury, bossRoom;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        entrance = new Room("at the dungeon entrance. A cold wind blows from within.");
+        hall = new Room("in the grand hall, torches lighting up the stone walls.");
+        armory = new Room("in the armory, filled with rusty swords and broken shields.");
+        library = new Room("in a dark library. Dusty tomes seem to be whispering to you.");
+        prison = new Room("in a prison chamber. You see eyes glowing within nearby cells.");
+        treasury = new Room("in the treasure vault, filled with mountains of gold and jewels.");
+        bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        entrance.setExits(null, hall, null, null);
+        hall.setExits(null, armory, prison, entrance);   
+        armory.setExits(library, null, hall, null);     
+        library.setExits(null, null, armory, null);      
+        prison.setExits(hall, treasury, null, null);    
+        treasury.setExits(null, bossRoom, null, prison); 
+        bossRoom.setExits(null, null, null, treasury); 
 
         // start game outside
-        currentRoom = outside;  
+        currentRoom = entrance;  
     }
 
     /**
