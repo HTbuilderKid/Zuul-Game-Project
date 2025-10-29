@@ -142,7 +142,7 @@ public class Game
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
      */
-    private void printHelp() 
+    private void printHelp()
     {
         System.out.println("You are a brave adventurer, wandering");
         System.out.println("around in the cursed forest.");
@@ -170,6 +170,7 @@ public class Game
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
+            System.out.println("Try to go in another direction!");
         }
         else {
             currentRoom = nextRoom;
@@ -185,7 +186,7 @@ public class Game
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
-            System.out.println("Quit what?");
+            System.out.println("Please only type 'quit' to quit the game!");
             return false;
         }
         else {
