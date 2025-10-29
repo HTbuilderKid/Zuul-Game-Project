@@ -29,7 +29,7 @@
 - Command is basically a user command. It has the command word and the second word that comes after it ("go", "south") and it also has the helper methods to check if the command is valid or needs a second word
 - Room is a location in the game. It has a text description of the area, links to the rooms next to it, and is used to navigate between different rooms
 - Parser is the thing that handles the input. It reads the line from the terminal we input it into, splits it into words, creates a Command object based on what we typed, and checks if the first word is valid by using the CommandWords class
-- CommandWords is the storage for the list of valid words. It checks if a given word is one in the list, and helps the Parser to validate out input.
+- CommandWords is the storage for the list of valid words. It checks if a given word is in the list, and helps the Parser to validate our input.
 
 
 
