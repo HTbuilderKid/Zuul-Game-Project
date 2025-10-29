@@ -1,26 +1,28 @@
-Project: zuul-bad
-Authors: Michael Kölling and David J. Barnes
 
-This project is part of the material for the book
+1. The Zuul-Bad program basically does the following things:
+- Welcomes the player
+- Describes where they currently are (in which room)
+- Waits for typed commands, like: "go south" or "help"
+- Moves the player between rooms if there is one
+- Ends the game when the player types "quit"
 
-   Objects First with Java - A Practical Introduction using BlueJ
-   Seventh edition
-   David J. Barnes and Michael Kölling
+2 & 3. The game takes 3 commands: "help", "go" and "quit". 
+- help prints a short help message and lists the available commands
+- go (we need to follow up with the direction) moves the player to another room following the direction. If there is no exit in said direction, it will print "There is no door!"
+- quit ends the game if typed alone, but if we type anything after it, such as "quit the game", it prints "Quit what?" and does nothing.
 
-This project is a simple framework for an adventure game. In this version,
-it has a few rooms and the ability for a player to walk between these rooms.
-That's all.
+4. There are 5 rooms created in the createRooms() method: 
+- outside
+- theater
+- pub
+- lab
+- office
 
-To start this application, create an instance of class "Game" and call its
-"play" method.
+5. Based on their descriptions, I think the map would look something like this: 
+        [theater]
+           |
+           |
+[pub]---[outside]---[lab]---[office]
 
-This version of the game contains some very bad class design. It should NOT
-be used as a basis for extending the project without fixing these design
-problems. It serves as an example to discuss good and bad design (chapter 8
-of the book).
 
-Chapter 8 of the book contains a detailed description of the problems in this
-project, and how to fix them.
 
-The project 'zuul-better' contains a version of this project with better
-designed class structure. It includes the fixes discussed in the book.
