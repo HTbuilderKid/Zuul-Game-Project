@@ -57,7 +57,7 @@ public class Game
         currentRoom = entrance;  
     }
     
-    private void printLocation()
+    private void printLocationInfo()
     {
         System.out.println("You are " + currentRoom.getDescription());
         System.out.println("Exits: ");
@@ -92,7 +92,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Thank you for playing Dungeon of Doom. Good bye.");
     }
 
     /**
@@ -101,10 +101,10 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the Dungeon of Doom!");
+        System.out.println("Welcome to Dungeon of Doom!");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        printLocation();
+        printLocationInfo();
     }
 
     /**
@@ -117,7 +117,7 @@ public class Game
         boolean wantToQuit = false;
 
         if(command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Sorry, but that is not an available command :(");
             return false;
         }
 
@@ -144,11 +144,11 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You are a brave adventurer, wandering");
+        System.out.println("around in the cursed forest.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        System.out.println("   go, quit, help");
     }
 
     /** 
@@ -173,7 +173,7 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            printLocation();
+            printLocationInfo();
         }
     }
 
