@@ -42,7 +42,7 @@ public class Game
         library = new Room("in a dark library. Dusty tomes seem to be whispering to you.");
         prison = new Room("in a prison chamber. You see eyes glowing within nearby cells.");
         treasury = new Room("in the treasure vault, filled with mountains of gold and jewels.");
-        bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.");
+        bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.\nYou're about to get touched, little boy!");
         
         // initialise room exits
         entrance.setExits(null, hall, null, null);
