@@ -45,19 +45,30 @@ public class Game
         bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.");
         
         // initialise room exits
-        entrance.setExits(null, hall, null, null);
-        hall.setExits(null, armory, prison, entrance);   
-        armory.setExits(library, null, hall, null);     
-        library.setExits(null, null, armory, null);      
-        prison.setExits(hall, treasury, null, null);    
-        treasury.setExits(null, bossRoom, null, prison); 
-        bossRoom.setExits(null, null, null, treasury); 
+        entrance.setExit("east", hall);
+        hall.setExit("west", entrance);
+        hall.setExit("east", armory);
+        hall.setExit("south", prison);
+        armory.setExit("west", hall);
+        armory.setExit("north", library);
+        library.setExit("south", armory);
+        prison.setExit("north", hall);
+        prison.setExit("east", treasury);
+        treasury.setExit("west", prison);
+        treasury.setExit("east", bossRoom);
+        bossRoom.setExit("west", treasury); 
+        
+        // and now we can add some random exits to the original dungeon that
+        // will break the map! Yay!
+        
+        prison.setExit("down", new Room("in a dark catacomb filled with dead bones."));
+        armory.setExit("up", new Room("on a spiral staircase that leads down to the abyss..."));
 
         // start game outside
         currentRoom = entrance;  
     }
     
-    private void printLocation()
+    private void printLocationInfo()
     {
         System.out.println("You are " + currentRoom.getDescription());
         System.out.println(currentRoom.getExitString());
@@ -90,7 +101,7 @@ public class Game
         System.out.println("Welcome to the Dungeon of Doom!");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        printLocation();
+        printLocationInfo();
     }
 
     /**
@@ -152,26 +163,14 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = null;
-        if(direction.equals("north")) {
-            nextRoom = currentRoom.northExit;
-        }
-        if(direction.equals("east")) {
-            nextRoom = currentRoom.eastExit;
-        }
-        if(direction.equals("south")) {
-            nextRoom = currentRoom.southExit;
-        }
-        if(direction.equals("west")) {
-            nextRoom = currentRoom.westExit;
-        }
+        Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
         else {
             currentRoom = nextRoom;
-            printLocation();
+            printLocationInfo();
         }
     }
 
