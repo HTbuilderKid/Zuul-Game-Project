@@ -102,6 +102,11 @@ public class Game
         System.out.println();
         printLocationInfo();
     }
+    
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
+    }
 
     /**
      * Given a command, process (that is: execute) the command.
@@ -126,6 +131,9 @@ public class Game
         }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
+        }
+        else if (commandWord.equals("look")) {
+            look();
         }
 
         return wantToQuit;
