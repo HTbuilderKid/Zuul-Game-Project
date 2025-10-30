@@ -60,21 +60,7 @@ public class Game
     private void printLocation()
     {
         System.out.println("You are " + currentRoom.getDescription());
-        System.out.println("Exits: ");
-        
-        if (currentRoom.northExit != null) {
-            System.out.print("north ");
-        }
-        if (currentRoom.eastExit != null) {
-            System.out.print("east ");
-        }
-        if (currentRoom.southExit != null) {
-            System.out.print("south ");
-        }
-        if (currentRoom.westExit != null) {
-            System.out.print("west ");
-        }
-        System.out.println();
+        System.out.println(currentRoom.getExitString());
     }
 
     /**
