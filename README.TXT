@@ -31,8 +31,10 @@
 - Parser is the thing that handles the input. It reads the line from the terminal we input it into, splits it into words, creates a Command object based on what we typed, and checks if the first word is valid by using the CommandWords class
 - CommandWords is the storage for the list of valid words. It checks if a given word is in the list, and helps the Parser to validate our input.
 
+17. No, we don't have to change anything in the Game class anymore, since that was the entire purpose of everything we just did. This is because everything is separated, and each class does it's own job (loose coupling)
 
-
+18. Keeping it non-static feels like the better optios. Even though there are certain pros to making it static, like how we don't need to create new commandWords anymore, the cons outweight the pros. 
+Making it static would make any future improvements harder, and it ties everything directly to the class instead of the objects, which isn't really a good thing for us.
 
 
 
