@@ -42,7 +42,7 @@ public class Game
         library = new Room("in a dark library. Dusty tomes seem to be whispering to you.");
         prison = new Room("in a prison chamber. You see eyes glowing within nearby cells.");
         treasury = new Room("in the treasure vault, filled with mountains of gold and jewels.");
-        bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.");
+        bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.\nYou're about to get touched, little boy!");
         
         // initialise room exits
         entrance.setExit("east", hall);
@@ -71,6 +71,22 @@ public class Game
     private void printLocationInfo()
     {
         System.out.println(currentRoom.getLongDescription());
+        System.out.println("You are " + currentRoom.getDescription());
+        System.out.println("Exits: ");
+        
+        if (currentRoom.getExit("north") != null) {
+            System.out.print("north ");
+        }
+        if (currentRoom.getExit("east") != null) {
+            System.out.print("east ");
+        }
+        if (currentRoom.getExit("south") != null) {
+            System.out.print("south ");
+        }
+        if (currentRoom.getExit("west") != null) {
+            System.out.print("west ");
+        }
+        System.out.println();
     }
 
     /**
@@ -88,7 +104,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Thank you for playing Dungeon of Doom. Good bye.");
     }
 
     /**
@@ -97,7 +113,7 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the Dungeon of Doom!");
+        System.out.println("Welcome to Dungeon of Doom!");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
         printLocationInfo();
@@ -123,7 +139,7 @@ public class Game
         boolean wantToQuit = false;
 
         if(command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Sorry, but that is not an available command :(");
             return false;
         }
 
@@ -154,10 +170,10 @@ public class Game
      * Here we print some stupid, cryptic message and a list of the 
      * command words.
      */
-    private void printHelp() 
+    private void printHelp()
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around the dungeon.");
+        System.out.println("You are a brave adventurer, wandering");
+        System.out.println("around in the cursed forest.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
@@ -182,6 +198,7 @@ public class Game
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
+            System.out.println("Try to go in another direction!");
         }
         else {
             currentRoom = nextRoom;
@@ -197,7 +214,7 @@ public class Game
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
-            System.out.println("Quit what?");
+            System.out.println("Please only type 'quit' to quit the game!");
             return false;
         }
         else {
