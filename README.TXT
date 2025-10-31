@@ -36,5 +36,5 @@
 18. Keeping it non-static feels like the better optios. Even though there are certain pros to making it static, like how we don't need to create new commandWords anymore, the cons outweight the pros. 
 Making it static would make any future improvements harder, and it ties everything directly to the class instead of the objects, which isn't really a good thing for us.
 
-
+*16:* There are 2 Answered 16 in the commits, because I have already committed once but forgot to update the project from the repository, so i ended up doing it again ;-;
 
