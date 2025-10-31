@@ -33,7 +33,7 @@ public class Game
      */
     private void createRooms()
     {
-        Room entrance, hall, armory, library, prison, treasury, bossRoom;
+        Room entrance, hall, armory, library, prison, treasury, bossRoom, catacomb, staircase;
       
         // create the rooms
         entrance = new Room("at the dungeon entrance. A cold wind blows from within.");
@@ -43,6 +43,8 @@ public class Game
         prison = new Room("in a prison chamber. You see eyes glowing within nearby cells.");
         treasury = new Room("in the treasure vault, filled with mountains of gold and jewels.");
         bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.\nYou're about to get touched, little boy!");
+        catacomb = new Room("in a dark catacomb filled with dead bones.");
+        staircase = new Room("on a spiral staircase that leads down to the abyss...");
         
         // initialise room exits
         entrance.setExit("east", hall);
@@ -51,19 +53,15 @@ public class Game
         hall.setExit("south", prison);
         armory.setExit("west", hall);
         armory.setExit("north", library);
+        armory.setExit("up", staircase);
         library.setExit("south", armory);
         prison.setExit("north", hall);
         prison.setExit("east", treasury);
+        prison.setExit("down", catacomb);
         treasury.setExit("west", prison);
         treasury.setExit("east", bossRoom);
-        bossRoom.setExit("west", treasury); 
+        bossRoom.setExit("west", treasury);
         
-        // and now we can add some random exits to the original dungeon that
-        // will break the map! Yay!
-        
-        prison.setExit("down", new Room("in a dark catacomb filled with dead bones."));
-        armory.setExit("up", new Room("on a spiral staircase that leads down to the abyss..."));
-
         // start game outside
         currentRoom = entrance;  
     }
@@ -71,22 +69,6 @@ public class Game
     private void printLocationInfo()
     {
         System.out.println(currentRoom.getLongDescription());
-        System.out.println("You are " + currentRoom.getDescription());
-        System.out.println("Exits: ");
-        
-        if (currentRoom.getExit("north") != null) {
-            System.out.print("north ");
-        }
-        if (currentRoom.getExit("east") != null) {
-            System.out.print("east ");
-        }
-        if (currentRoom.getExit("south") != null) {
-            System.out.print("south ");
-        }
-        if (currentRoom.getExit("west") != null) {
-            System.out.print("west ");
-        }
-        System.out.println();
     }
 
     /**
