@@ -34,17 +34,17 @@ public class Game
     private void createRooms()
     {
         Room entrance, hall, armory, library, prison, treasury, bossRoom, catacomb, staircase;
-      
+
         // create the rooms
-        entrance = new Room("at the dungeon entrance. A cold wind blows from within.");
+        entrance = new Room("at the dungeon entrance. A cold wind blows from within. You feel like you are in Canada");
         hall = new Room("in the grand hall, torches lighting up the stone walls.");
-        armory = new Room("in the armory, filled with rusty swords and broken shields.");
-        library = new Room("in a dark library. Dusty tomes seem to be whispering to you.");
-        prison = new Room("in a prison chamber. You see eyes glowing within nearby cells.");
-        treasury = new Room("in the treasure vault, filled with mountains of gold and jewels.");
+        armory = new Room("in the armory, filled with rusty swords and broken shields. Whoever owned this dungeon must have been broke");
+        library = new Room("in a dark library. Dusty tomes seem to be whispering to you. Or maybe you're just schizophrenic");
+        prison = new Room("in a prison chamber. You see eyes glowing within nearby cells. You really shouldn't have taken that blue candy ealier...");
+        treasury = new Room("in the treasure vault, filled with mountains of gold and jewels. Now you can buy your dad back!");
         bossRoom = new Room("in the throne of the Dungeon Lord! His massive shadow looms over you.\nYou're about to get touched, little boy!");
-        catacomb = new Room("in a dark catacomb filled with dead bones.");
-        staircase = new Room("on a spiral staircase that leads down to the abyss...");
+        catacomb = new Room("in a dark catacomb filled with dead bones from dead people.");
+        staircase = new Room("on a spiral staircase that leads down to the abyss... descending will make you go in a downward spiral");
         
         // initialise room exits
         entrance.setExit("east", hall);
